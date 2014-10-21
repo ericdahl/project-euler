@@ -1,6 +1,6 @@
-import p007
+import utils
 
-primes = p007.primes(1000000)
+primes = utils.primes(1000000)
 
 def truncatable(n):
     sn = str(n)

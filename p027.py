@@ -10,13 +10,13 @@
 #
 # considering quadratics of the  form n**2 + an + b where abs(a) < 1000 and abs(b) < 1000, find the product of the coefficients a and b for the quadratic expression which produces the maximum number of primes for consective values of n starting with 0
 
-import p007
+import utils
 
 
 def f(b, c, n):
     return n**2 + b*n + c
 
-primes = p007.primes(10000)
+primes = utils.primes(10000)
 
 maximum = {'prime': 0}
 for b in range(-1000, 1001):
