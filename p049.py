@@ -1,5 +1,4 @@
 import utils
-import itertools
 
 primes = set(filter(lambda n: n >= 1000, utils.primes(9999)))
 
