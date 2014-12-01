@@ -1,6 +1,6 @@
 -module(p004).
 
--export([run/0]).
+-export([start/0]).
 
 p(N) ->
   L = integer_to_list(N),
@@ -20,5 +20,5 @@ f(I, J, Max) ->
       end
   end.
 
-run() ->
+start() ->
   io:format("~p ~n", [f()]).

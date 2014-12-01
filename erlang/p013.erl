@@ -1,6 +1,6 @@
 -module(p013).
 
--export([run/0]).
+-export([start/0]).
 
 f() ->
   N = string:tokens(string:strip("""
@@ -109,6 +109,6 @@ f() ->
   string:substr(integer_to_list(Sum), 1, 10).
 
 
-run() ->
+start() ->
   io:format("~p ~n", [f()]).
 

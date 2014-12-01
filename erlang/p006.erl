@@ -1,6 +1,6 @@
 -module(p006).
 
--export([run/0]).
+-export([start/0]).
 
 f(N) ->
   L = lists:seq(1, N),
@@ -8,5 +8,5 @@ f(N) ->
   SquareSum = lists:sum(L) * lists:sum(L),
   SquareSum - SumSquares.
 
-run() ->
+start() ->
   io:format("~p ~n", [f(100)]).

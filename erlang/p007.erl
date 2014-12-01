@@ -1,9 +1,9 @@
 -module(p007).
 
--export([run/0]).
+-export([start/0]).
 
 f() ->
   lists:nth(10001, primes:primes(1000000)).
 
-run() ->
+start() ->
   io:format("~p ~n", [f()]).

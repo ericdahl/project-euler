@@ -1,6 +1,6 @@
 -module(p008).
 
--export([run/0]).
+-export([start/0]).
 
 p() ->
   N = re:replace("""
@@ -37,5 +37,5 @@ p(N, I, Len, Max) ->
   end.
 
 
-run() ->
+start() ->
   io:format("~p ~n", [p()]).
