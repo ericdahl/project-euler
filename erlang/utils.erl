@@ -1,4 +1,4 @@
--module(primes).
+-module(utils).
 
 -export([primes/1]).
 
