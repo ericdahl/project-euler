@@ -3,18 +3,9 @@
 -export([run/0]).
 
 f() ->
-  f(1, 1).
-
-f(A, B) when A > 998 ->
-  f(1, B + 1);
-
-f(A, B) ->
-  C = 1000 - (A + B),
-  if
-    A*A + B*B == C*C -> A * B * C;
-    true -> f(A + 1, B)
-  end.
-
+  {A, B} = hd([ {A, B} || A <- lists:seq(1, 1000), B <- lists:seq(1, A), A*A + B*B == (1000 - A - B) * (1000 - A - B) ]),
+  C = 1000 - A - B,
+  A * B * C.
 
 run() ->
   io:format("~p ~n", [f()]).
