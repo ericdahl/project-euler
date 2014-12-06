@@ -16,7 +16,7 @@ primes(L, I, Max) ->
 
 
 divisors(N) ->
-  [ A || A <- lists:seq(2, N div 2), N rem A == 0].
+  [ A || A <- lists:seq(1, N div 2), N rem A == 0].
 
 pow(Base, Exponent) when Base == 0, Exponent == 0 ->
   1;
