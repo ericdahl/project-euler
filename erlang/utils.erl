@@ -4,6 +4,7 @@
 -export([divisors/1]).
 -export([pow/2]).
 -export([permutations/1]).
+-export([factorial/1]).
 
 primes(N) ->
   L = lists:seq(2, N),
@@ -32,3 +33,8 @@ permutations([]) ->
   [[]];
 permutations(L) ->
   [[H|T] || H <- L, T <- permutations(L--[H])].
+
+factorial(N) when N == 1 ->
+  1;
+factorial(N) ->
+  N * factorial(N - 1).
