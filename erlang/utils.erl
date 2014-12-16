@@ -5,6 +5,7 @@
 -export([pow/2]).
 -export([permutations/1]).
 -export([factorial/1]).
+-export([pandigital/1]).
 
 primes(N) ->
   L = lists:seq(2, N),
@@ -36,3 +37,10 @@ factorial(N) when N == 1 ->
   1;
 factorial(N) ->
   N * factorial(N - 1).
+
+pandigital(N) when is_integer(N) ->
+  pandigital(integer_to_list(N));
+
+pandigital(S) ->
+  sets:from_list(S) == sets:from_list(lists:seq($1, $0 + length(S))).
+
