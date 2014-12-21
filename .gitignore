@@ -5,3 +5,4 @@
 
 erlang/ebin/
 *\.dump
+erlang/\.rebar/
