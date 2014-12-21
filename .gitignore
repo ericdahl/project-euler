@@ -3,5 +3,5 @@
 
 *\.pyc
 
-*\.beam
+erlang/ebin/
 *\.dump
