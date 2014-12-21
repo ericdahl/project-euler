@@ -6,3 +6,5 @@
 erlang/ebin/
 *\.dump
 erlang/\.rebar/
+
+java/target/
