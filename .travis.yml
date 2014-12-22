@@ -1,0 +1,18 @@
+language: java
+jdk:
+  - oraclejdk8
+
+# Add support for Erlang. The VM has erlang installed already but it
+# is an out of date version (older than R16B)
+before_install:
+  - mkdir bin
+  - wget -O bin/rebar https://raw.github.com/wiki/rebar/rebar/rebar
+  - chmod u+x bin/rebar
+  - export PATH="${PWD}/bin:${PATH}"
+  - sudo apt-get remove erlang erlang-base erlang-base-hipe
+  - sudo apt-get update
+  - sudo apt-get install libwxgtk2.8-0
+  - wget http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-erlang_17.4-1~debian~wheezy_amd64.deb
+  - sudo dpkg -i esl-erlang_17.4-1~debian~wheezy_amd64.deb
+
+script: make compile
