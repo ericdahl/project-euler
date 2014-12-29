@@ -6,6 +6,7 @@
 -export([permutations/1]).
 -export([factorial/1]).
 -export([pandigital/1]).
+-export([palindrome/1]).
 
 primes(N) ->
   L = lists:seq(2, N),
@@ -44,3 +45,5 @@ pandigital(N) when is_integer(N) ->
 pandigital(S) ->
   sets:from_list(S) == sets:from_list(lists:seq($1, $0 + length(S))).
 
+palindrome(N) ->
+  lists:reverse(integer_to_list(N)) == integer_to_list(N).
