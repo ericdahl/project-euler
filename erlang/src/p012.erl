@@ -25,28 +25,5 @@ divisors(N, I) when N rem I == 0 -> 1 + divisors(N, I - 1);
 divisors(N, I) -> divisors(N, I - 1).
 
 
-
-
-
-%% f() ->
-%%   g(0, 1).
-%%
-%% g(P, I) ->
-%%   R = P + I,
-%%   M = z(R),
-%%   if
-%%     M > 500 -> R;
-%%     true -> g(R, I + 1)
-%%   end.
-%%
-%% z(N) -> z(N, N div 2).
-%%
-%% z(_N, I) when I =< 1 -> 1;
-%% z(N, I) when N rem I == 0 -> 1 + z(N, I - 1);
-%% z(N, I) -> z(N, I - 1).
-
-
-
-
 start() ->
   io:format("~p ~n", [f()]).
