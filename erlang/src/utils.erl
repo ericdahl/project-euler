@@ -1,6 +1,7 @@
 -module(utils).
 
 -export([primes/1]).
+-export([is_prime/1]).
 -export([divisors/1]).
 -export([pow/2]).
 -export([permutations/1]).
@@ -17,6 +18,13 @@ primes(L, I, Max) when I > Max ->
 
 primes(L, I, Max) ->
   primes(lists:filter(fun(J) -> J =< I orelse J rem I /= 0 end, L), I + 1, Max).
+
+is_prime(N) when N == 1 orelse N rem 2 == 0 -> false;
+is_prime(N) -> is_prime(N, 3).
+is_prime(N, I) when I * I > N -> true;
+is_prime(N, I) when N rem I == 0 -> false;
+is_prime(N, I) -> is_prime(N, I + 2).
+
 
 
 divisors(N) ->
