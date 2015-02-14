@@ -6,6 +6,13 @@ public final class Util {
 
     public static Set<Integer> primes(int n) {
 
+        return primesBits(n).stream()
+                .boxed()
+                .collect(Collectors.toCollection(() -> new HashSet<>(n)));
+    }
+
+    public static BitSet primesBits(int n) {
+
         BitSet bitSet = new BitSet(n + 1);
         bitSet.set(2, n + 1);
 
@@ -14,9 +21,6 @@ public final class Util {
                 bitSet.clear(j);
             }
         }
-
-        return bitSet.stream()
-                .boxed()
-                .collect(Collectors.toCollection(() -> new HashSet<>(n)));
+        return bitSet;
     }
 }
