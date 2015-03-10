@@ -8,6 +8,7 @@
 -export([factorial/1]).
 -export([pandigital/1]).
 -export([palindrome/1]).
+-export([factors/1]).
 
 primes(N) ->
   L = lists:seq(2, N),
@@ -25,7 +26,10 @@ is_prime(N, I) when I * I > N -> true;
 is_prime(N, I) when N rem I == 0 -> false;
 is_prime(N, I) -> is_prime(N, I + 2).
 
-
+factors(N) -> factors(N, 2).
+factors(N, _I) when N =< 1 -> [];
+factors(N, I) when N rem I == 0 -> [ I | factors(N div I, I) ];
+factors(N, I) -> factors(N, I + 1).
 
 divisors(N) ->
   [ A || A <- lists:seq(1, N div 2), N rem A == 0].
