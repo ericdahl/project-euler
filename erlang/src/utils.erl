@@ -9,6 +9,7 @@
 -export([pandigital/1]).
 -export([palindrome/1]).
 -export([factors/1]).
+-export([is_relative_prime/2]).
 
 primes(N) ->
   L = lists:seq(2, N),
@@ -30,6 +31,15 @@ factors(N) -> factors(N, 2).
 factors(N, _I) when N =< 1 -> [];
 factors(N, I) when N rem I == 0 -> [ I | factors(N div I, I) ];
 factors(N, I) -> factors(N, I + 1).
+
+is_relative_prime(A, B) ->
+  FactorsA = factors(A),
+  is_relative_prime_factors(B, FactorsA).
+
+is_relative_prime_factors(_B, []) -> true;
+is_relative_prime_factors(B, [F|_FactorsA]) when B rem F == 0 -> false;
+is_relative_prime_factors(B, [_F|FactorsA]) -> is_relative_prime_factors(B, FactorsA).
+
 
 divisors(N) ->
   [ A || A <- lists:seq(1, N div 2), N rem A == 0].
