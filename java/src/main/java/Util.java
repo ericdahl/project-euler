@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 
 public final class Util {
     private Util() {}
@@ -22,5 +23,29 @@ public final class Util {
             }
         }
         return bitSet;
+    }
+
+    public static LongStream uniqueFactors(int n, final BitSet primeBits) {
+        if (primeBits.get(n)) {
+            return LongStream.of(n);
+        }
+
+        final LongStream.Builder builder = LongStream.builder();
+
+        for (int p = 2; n > 1; p = primeBits.nextSetBit(p + 1)) {
+            if (p == -1) {
+                throw new RuntimeException("not enough primes");
+            }
+
+            if (n % p == 0) {
+                n /= p;
+                while (n % p == 0) {
+                    n /= p;
+                }
+                builder.add(p);
+            }
+        }
+
+        return builder.build();
     }
 }
