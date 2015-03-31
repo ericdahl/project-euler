@@ -9,6 +9,7 @@
 -export([pandigital/1]).
 -export([palindrome/1]).
 -export([factors/1]).
+-export([factors/2]).
 -export([is_relative_prime/2]).
 -export([binary_to_integer/1]).
 
@@ -28,10 +29,16 @@ is_prime(N, I) when I * I > N -> true;
 is_prime(N, I) when N rem I == 0 -> false;
 is_prime(N, I) -> is_prime(N, I + 2).
 
-factors(N) -> factors(N, 2).
-factors(N, _I) when N =< 1 -> [];
-factors(N, I) when N rem I == 0 -> [ I | factors(N div I, I) ];
-factors(N, I) -> factors(N, I + 1).
+factors(N) -> factorize(N, 2).
+factorize(N, _I) when N =< 1 -> [];
+factorize(N, I) when N rem I == 0 -> [ I | factorize(N div I, I) ];
+factorize(N, I) -> factorize(N, I + 1).
+
+factors(N, []) -> [];
+factors(N, [P|Primes]) when P > N -> [];
+factors(N, [P|Primes]) when N rem P == 0 -> [P|factors(N div P, Primes)];
+factors(N, [P|Primes]) -> factors(N, Primes).
+
 
 is_relative_prime(A, B) ->
   FactorsA = factors(A),
