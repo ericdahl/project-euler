@@ -4,7 +4,7 @@
 
 f() ->
   {_, Data} = file:read_file("../resources/p059_cipher.txt"),
-  Nums = [ binary_to_integer(N) || N <- binary:split(Data, [<<",">>], [global]) ],
+  Nums = [ utils:binary_to_integer(N) || N <- binary:split(Data, [<<",">>], [global]) ],
   Keys = [ [A, B, C] || A <- lists:seq($a, $z), B <- lists:seq($a, $z), C <- lists:seq($a, $z) ],
   {_, Key} = lists:max(spaces(Nums, Keys)),
   lists:sum(decrypt(Nums, Key)).

@@ -5,7 +5,7 @@
 f() ->
   {_, Data} = file:read_file("../resources/p081_matrix.txt"),
   Lines = binary:split(Data, [<<"\n">>], [global]),
-  Matrix = [ [ binary_to_integer(B) || B <- binary:split(Line, [<<",">>], [global]) ] || Line <- Lines],
+  Matrix = [ [ utils:binary_to_integer(B) || B <- binary:split(Line, [<<",">>], [global]) ] || Line <- Lines],
   Tree = rotate(Matrix) ++ fill(Matrix),
   min_path(hd(Tree), tl(Tree)).
 

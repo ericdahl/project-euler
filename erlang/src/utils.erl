@@ -10,6 +10,7 @@
 -export([palindrome/1]).
 -export([factors/1]).
 -export([is_relative_prime/2]).
+-export([binary_to_integer/1]).
 
 primes(N) ->
   L = lists:seq(2, N),
@@ -69,3 +70,6 @@ pandigital(S) ->
 
 palindrome(N) ->
   lists:reverse(integer_to_list(N)) == integer_to_list(N).
+
+binary_to_integer(B) ->
+  list_to_integer(binary_to_list(B)).

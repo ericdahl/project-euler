@@ -5,7 +5,7 @@
 f() ->
   {_, Data} = file:read_file("../resources/p011_grid.txt"),
   Lines = binary:split(Data, [<<"\n">>], [global]),
-  Grid = [ [ binary_to_integer(B) || B <- binary:split(Line, [<<" ">>], [global]) ] || Line <- Lines],
+  Grid = [ [ utils:binary_to_integer(B) || B <- binary:split(Line, [<<" ">>], [global]) ] || Line <- Lines],
   lists:max([ max(Grid, Row, Col) || Row <- lists:seq(1, length(Grid)), Col <- lists:seq(1, length(Grid)) ]).
 
 max(Grid, Row, Col) ->

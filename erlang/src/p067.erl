@@ -5,7 +5,7 @@
 f() ->
   {_, Data} = file:read_file("../resources/p067_triangle.txt"),
   Lines = binary:split(Data, [<<"\n">>], [global]),
-  Tree = [ [ binary_to_integer(B) || B <- binary:split(Line, [<<" ">>], [global]) ] || Line <- Lines],
+  Tree = [ [ utils:binary_to_integer(B) || B <- binary:split(Line, [<<" ">>], [global]) ] || Line <- Lines],
   max_path(hd(Tree), tl(Tree)).
 
 max_path(Sums, []) -> lists:max(Sums);
