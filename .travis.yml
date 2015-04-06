@@ -14,5 +14,6 @@ before_install:
   - sudo apt-get install libwxgtk2.8-0
   - wget http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_esl/esl-erlang_17.4-2~debian~wheezy_amd64.deb
   - sudo dpkg -i esl-erlang_17.4-2~debian~wheezy_amd64.deb
+  - (cd js && npm install)
 
 script: make compile
