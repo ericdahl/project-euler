@@ -10,7 +10,7 @@ f() ->
                      N / D < 1 / 2, 
                      sets:is_disjoint(dict:fetch(N, Dict), dict:fetch(D, Dict)) ]).
 
-factor_dict(N, Primes) when N == 1 -> dict:new();
+factor_dict(N, _Primes) when N == 1 -> dict:new();
 factor_dict(N, Primes) -> dict:store(N, sets:from_list(utils:factors(N, Primes)), factor_dict(N - 1, Primes)).
 
 

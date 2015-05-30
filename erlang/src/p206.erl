@@ -15,7 +15,7 @@ g(Curr, Max) ->
     true -> g(Curr + 10, Max)
   end.
 
-matches(N, Digit) when Digit == 0 -> true;
+matches(_N, Digit) when Digit == 0 -> true;
 matches(N, Digit) ->
   R = N div 100,
   R rem 10 == Digit andalso matches(R, Digit - 1).

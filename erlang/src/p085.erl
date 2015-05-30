@@ -8,7 +8,7 @@ f() ->
 
 
 count(W, H) -> count(W, H, 0, 0).
-count(W, H, X, Y) when X == W -> 0;
+count(W, _H, X, _Y) when X == W -> 0;
 count(W, H, X, Y) when Y == H -> count(W, H, X + 1, 0);
 count(W, H, X, Y) -> (W - X) * (H - Y) + count(W, H, X, Y + 1).
 

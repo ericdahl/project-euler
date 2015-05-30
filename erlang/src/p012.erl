@@ -9,7 +9,7 @@ f() ->
   y(1, 80).
 
 y(I, Threads) ->
-  Results = rpc:parallel_eval(lists:map(fun(I) -> {p012, z, [triangle(I)]} end, lists:seq(I, I + Threads))),
+  Results = rpc:parallel_eval(lists:map(fun(N) -> {p012, z, [triangle(N)]} end, lists:seq(I, I + Threads))),
   Matches = lists:filter(fun({Divisors, _N}) -> Divisors > 500 end, Results),
   if
     length(Matches) > 0 -> element(2, hd(lists:sort(Matches)));

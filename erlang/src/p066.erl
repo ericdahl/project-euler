@@ -7,7 +7,7 @@ f() ->
 
 pell(D) -> pell(D, 1, 1, 1, 0).
 
-pell(D, P, K, X1, Y) when K == 1 andalso Y /= 0 ->
+pell(_D, _P, K, X1, Y) when K == 1 andalso Y /= 0 ->
   X1;
 
 pell(D, P, K, X, Y) ->

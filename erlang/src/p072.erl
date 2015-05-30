@@ -18,10 +18,10 @@ factors(N, Primes, SPrimes) ->
     true -> factors(N, Primes)
   end.
 
-factors(N, []) -> [];
-factors(N, [P|Primes]) when P > N -> [];
+factors(_N, []) -> [];
+factors(N, [P|_Primes]) when P > N -> [];
 factors(N, [P|Primes]) when N rem P == 0 -> [P|factors(N div P, Primes)];
-factors(N, [P|Primes]) -> factors(N, Primes).
+factors(N, [_P|Primes]) -> factors(N, Primes).
 
 
 start() ->

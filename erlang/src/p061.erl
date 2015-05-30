@@ -23,12 +23,12 @@ paths([H|T]) -> common(H, paths(T)).
 last(N) -> N rem 100.
 first(N) ->  N div 100.
 
-triangular(N) -> [ N * (N + 1) div 2 || N <- lists:seq(1, N) ].
-square(N) -> [ N * N || N <- lists:seq(1, N) ].
-pentagonal(N) -> [ N * (3 * N  - 1) div 2 || N <- lists:seq(1, N) ].
-hexagonal(N) -> [ N * (2 * N  - 1) || N <- lists:seq(1, N) ].
-heptagonal(N) -> [ N * (5 * N  - 3) div 2 || N <- lists:seq(1, N) ].
-octagonal(N) -> [ N * (3 * N  - 2) || N <- lists:seq(1, N) ].
+triangular(N) -> [ I * (I + 1) div 2 || I <- lists:seq(1, N) ].
+square(N) -> [ I * I || I <- lists:seq(1, N) ].
+pentagonal(N) -> [ I * (3 * I  - 1) div 2 || I <- lists:seq(1, N) ].
+hexagonal(N) -> [ I * (2 * I  - 1) || I <- lists:seq(1, N) ].
+heptagonal(N) -> [ I * (5 * I  - 3) div 2 || I <- lists:seq(1, N) ].
+octagonal(N) -> [ I * (3 * I  - 2) || I <- lists:seq(1, N) ].
 
 start() ->
   io:format("~p ~n", [f()]).

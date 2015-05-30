@@ -34,10 +34,10 @@ factorize(N, _I) when N =< 1 -> [];
 factorize(N, I) when N rem I == 0 -> [ I | factorize(N div I, I) ];
 factorize(N, I) -> factorize(N, I + 1).
 
-factors(N, []) -> [];
-factors(N, [P|Primes]) when P > N -> [];
+factors(_N, []) -> [];
+factors(N, [P|_Primes]) when P > N -> [];
 factors(N, [P|Primes]) when N rem P == 0 -> [P|factors(N div P, Primes)];
-factors(N, [P|Primes]) -> factors(N, Primes).
+factors(N, [_P|Primes]) -> factors(N, Primes).
 
 
 is_relative_prime(A, B) ->
