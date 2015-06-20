@@ -1,7 +1,7 @@
 P=p001
 
 compile:
-	go build $(P).go
+	go build utils.go $(P).go
 
 run: compile
 	./$(P)
