@@ -1,7 +1,6 @@
 package main
 
 import "fmt"
-import "strconv"
 
 func main() {
     max := 0
