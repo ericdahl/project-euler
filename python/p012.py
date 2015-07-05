@@ -1,6 +1,4 @@
-from time import time
-
-# FIXME: extremely inefficient (~4 hours)
+from math import sqrt
 
 def triangles():
     i = 1
@@ -12,19 +10,17 @@ def triangles():
 
 def divisors(n):
     count = 1
-    for i in xrange(1, n):
+    for i in xrange(1, int(sqrt(n))):
         if n % i == 0:
-            count += 1
+            count += 2
 
     return count
 
-start = time()
-x = triangles()
 for i in triangles():
+    if i % 2 == 1:
+        continue
+
     num_divisors = divisors(i)
     if num_divisors > 500:
         print i
         break
-
-end = time()
-print end-start
