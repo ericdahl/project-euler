@@ -3,26 +3,23 @@
 -export([start/0]).
 -export([divisors/1]).
 
-%% FIXME: slow (25 minutes)
+f() -> f(1).
 
-f() ->
-  y(1, 80).
-
-y(I, Threads) ->
-  Results = rpc:parallel_eval(lists:map(fun(N) -> {p012, z, [triangle(N)]} end, lists:seq(I, I + Threads))),
-  Matches = lists:filter(fun({Divisors, _N}) -> Divisors > 500 end, Results),
+f(N) ->
+  T = triangle(N),
+  D = divisors(T),
   if
-    length(Matches) > 0 -> element(2, hd(lists:sort(Matches)));
-    true -> y(I + Threads, Threads)
+    D > 500 -> T;
+    true -> f(N + 1)
   end.
 
 triangle(N) -> N * (N + 1) div 2.
 
-divisors(N) -> {divisors(N, N div 2), N}.
+divisors(N) -> divisors(N, 1).
 
-divisors(_N, I) when I =< 1 -> 1;
-divisors(N, I) when N rem I == 0 -> 1 + divisors(N, I - 1);
-divisors(N, I) -> divisors(N, I - 1).
+divisors(N, I) when I * I > N -> 0;
+divisors(N, I) when N rem I == 0 -> 2 + divisors(N, I + 1);
+divisors(N, I) -> divisors(N, I + 1).
 
 
 start() ->
