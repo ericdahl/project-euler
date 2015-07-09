@@ -1,6 +1,11 @@
+from math import sqrt
+from itertools import count
+
 def divisors(n):
     r = set()
-    for i in range(1, n / 2):
+    for i in count(1):
+        if i * i > n:
+            break
         if n % i == 0:
             r.add(i)
             r.add(n / i)
