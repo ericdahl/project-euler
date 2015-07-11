@@ -1,4 +1,4 @@
-package main
+package utils 
 
 func Factors(n uint64) ([]uint64) {
     factors := make([]uint64, 0, 2)
