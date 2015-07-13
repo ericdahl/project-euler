@@ -10,3 +10,5 @@ erlang/\.rebar/
 java/target/
 
 js/node_modules/
+
+**/*\.swp
