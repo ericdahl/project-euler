@@ -1,10 +1,11 @@
 P=p001
 
 compile:
-	go build $(P).go utils.go
+	export GOPATH=`pwd`
+	go install $(P)
 
 run: compile
-	./$(P)
+	./bin/$(P)
 
 clean:
 	go clean
