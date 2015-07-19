@@ -52,3 +52,16 @@ func Factorial(n uint) (*big.Int) {
     }
     return result
 }
+
+
+
+func Divisors(n uint64) ([]uint64) {
+    divisors := make([]uint64, 0, 2)
+    for i := uint64(1); i * i < n; i++ {
+        if n % i == 0 {
+            divisors = append(divisors, i)
+            divisors = append(divisors, n / i)
+        }
+    }
+    return divisors
+}

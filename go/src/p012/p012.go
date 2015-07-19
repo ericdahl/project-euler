@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "utils"
+)
 
 func main() {
 
@@ -9,19 +12,9 @@ func main() {
             continue
         }
 
-        if divisors(n) > 500 {
+        if len(utils.Divisors(uint64(n))) > 500 {
             fmt.Println(n)
             break
         }
     }
-}
-
-func divisors(n int) (int) {
-    count := 0
-    for i := 1; i * i < n; i++ {
-        if n % i == 0 {
-            count += 2
-        }
-    }
-    return count
 }

@@ -43,3 +43,21 @@ func TestFactorial(t *testing.T) {
         }
     }
 }
+
+func TestDivisors(t *testing.T) {
+
+    cases := []struct {
+        in uint64
+        want []uint64
+    } {
+        {12, []uint64{1, 12, 2, 6, 3, 4} },
+        {7, []uint64{1, 7} },
+    }
+
+    for _, c := range cases {
+        got := Divisors(c.in)
+        if !reflect.DeepEqual(got, c.want) {
+            t.Errorf("Divisors(%v) == %v, want %v", c.in, got, c.want)
+        }
+    }
+}
