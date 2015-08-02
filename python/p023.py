@@ -1,14 +1,6 @@
 from itertools import combinations_with_replacement
+from utils import divisors
 
-
-def divisors(n):
-    r = set()
-    for i in range(1, n / 2):
-        if n % i == 0:
-            r.add(i)
-            r.add(n / i)
-    r.discard(n)
-    return r
 
 abundant = filter(lambda n: sum(divisors(n)) > n, range(2, 29000))
 
