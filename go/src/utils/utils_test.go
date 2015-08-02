@@ -53,6 +53,7 @@ func TestDivisors(t *testing.T) {
     } {
         {12, []uint64 {1, 12, 2, 6, 3, 4}},
         {7, []uint64 {1, 7} },
+        {196, []uint64 {1, 196, 2, 98, 4, 49, 7, 28, 14} },
     }
 
     for _, c := range cases {
