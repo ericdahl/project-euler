@@ -3,27 +3,18 @@
 -export([start/0]).
 
 f() ->
-  element(2, lists:max([ {repeats(I, [], 1), I} || I <- lists:seq(2, 999) ])).
+  element(2, lists:max([ {len(I), I} || I <- lists:seq(2, 999) ])).
 
-repeats(_N, _L, R) when R == 0 -> 0;
+len(N) -> len(N, 1, 1, dict:new()).
 
-repeats(N, L, R) ->
-  Rem = R rem N,
-  Loop = lists:member(Rem, L),
-  if
-    Loop -> length(L) - index(L, Rem) + 1;
-    true -> repeats(N, L ++ [Rem], Rem * 10)
+len(_N, D, _I, _Dict) when D == 0 -> 0;
+len(N, D, I, Dict) when D < N -> len(N, D * 10, I, Dict);
+len(N, D, I, Dict) ->
+  Rem = D rem N,
+  case dict:is_key(Rem, Dict) of
+    true -> I - dict:fetch(Rem, Dict);
+    false -> len(N, D rem N, I + 1, dict:store(Rem, I, Dict))
   end.
-
-index(L, N) -> index(L, N, 1).
-index([], _N, _Index) -> undefined;
-index([H|_T], N, Index) when H == N -> Index;
-index([_H|T], N, Index) -> index(T, N, Index + 1).
-
 
 start() ->
   io:format("~p ~n", [f()]).
-
-
-
-
