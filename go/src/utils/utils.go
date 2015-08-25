@@ -1,6 +1,7 @@
 package utils
 
 import (
+    "strconv"
     "math/big"
 )
 
@@ -65,4 +66,31 @@ func Divisors(n uint64) ([]uint64) {
         }
     }
     return divisors
+}
+
+func Pandigital(n uint64) (bool) {
+    return PandigitalString(strconv.FormatUint(n, 10))
+}
+
+
+func PandigitalString(n string) (bool) {
+    if len(n) == 0 || len(n) > 9 {
+        return false
+    }
+
+    m := make(map[rune]bool)
+    for _, c := range n {
+        if c == '0' || m[c] {
+            return false
+        }
+        m[c] = true
+    }
+
+    for i := rune('1'); i < rune('1') + rune(len(n)); i++ {
+        if !m[i] {
+            return false
+        }
+    }
+
+    return true
 }

@@ -83,3 +83,24 @@ func TestPrimes(t *testing.T) {
         }
     }
 }
+
+func TestPandigital(t *testing.T) {
+    cases := []struct {
+        in uint64
+        want bool
+    } {
+        { 123, true },
+        { 31, false },
+        { 1230, false },
+        { 4321, true },
+        { 489632715, true },
+        { 48911632715, false },
+    }
+
+    for _, c := range cases {
+        got := Pandigital(c.in)
+        if c.want != got {
+            t.Errorf("Pandigital(%v) == %v, want %v", c.in, got, c.want)
+        }
+    }
+}
