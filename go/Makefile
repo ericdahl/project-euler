@@ -1,6 +1,9 @@
 P=p001
 
-compile:
+get:
+	GOPATH=`pwd` go get $(P)
+
+compile: get
 	GOPATH=`pwd` go install $(P)
 
 run: compile
