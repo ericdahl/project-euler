@@ -94,3 +94,15 @@ func PandigitalString(n string) (bool) {
 
     return true
 }
+
+func DistinctFactors(n uint64, primes []uint64) ([]uint64) {
+    result := make([]uint64, 0)
+    for _, p := range primes {
+        if n % p == 0 {
+            result = append(result, p)
+            for ; n % p == 0; n /= p { }
+        }
+    }
+
+    return result;
+}

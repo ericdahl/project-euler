@@ -104,3 +104,23 @@ func TestPandigital(t *testing.T) {
         }
     }
 }
+
+func TestDistinctFactors(t *testing.T) {
+    cases := []struct {
+        in uint64
+        want []uint64
+    } {
+        { 14, []uint64 {2, 7} },
+        { 15, []uint64 {3, 5} },
+        { 644, []uint64 {2, 7, 23} },
+        { 7, []uint64 {7} },
+    }
+
+    primes := []uint64 {2, 3, 5, 7, 11, 13, 17, 23}
+    for _, c := range cases {
+        got := DistinctFactors(c.in, primes)
+        if !reflect.DeepEqual(got, c.want) {
+            t.Errorf("DistinctFactors(%v) == %v, want %v", c.in, got, c.want)
+        }
+    }
+}
