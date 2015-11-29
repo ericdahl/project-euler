@@ -48,4 +48,12 @@ public final class Util {
 
         return builder.build();
     }
+
+    public static long reverse(long n) {
+        long result = 0;
+        for (; n > 0; n /= 10) {
+            result = result * 10 + n % 10;
+        }
+        return result;
+    }
 }

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 
 public class UtilTest {
 
@@ -27,5 +28,13 @@ public class UtilTest {
     public void shouldErrorIfNotEnoughFactors() throws Exception {
         BitSet primesBits = Util.primesBits(10);
         Util.uniqueFactors(12345, primesBits).boxed().collect(Collectors.toList());
+    }
+
+    @Test
+    public void shouldReverse() {
+        assertThat(Util.reverse(1234L), is(4321L));
+        assertThat(Util.reverse(0L), is(0L));
+        assertThat(Util.reverse(7L), is(7L));
+        assertThat(Util.reverse(933L), is(339L));
     }
 }
