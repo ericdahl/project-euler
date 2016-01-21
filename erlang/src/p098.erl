@@ -10,7 +10,7 @@ words() ->
   {_, Data} = file:read_file("../resources/p098_words.txt"),
   [ string:substr(N, 2, string:len(N) - 2) || N <- [ binary_to_list(N) || N <- binary:split(Data, [<<",">>], [global]) ]].
 
-anagrams(Words) ->  dict:filter(fun(K, V) -> length(V) > 1 end, anagram_dict(Words)).
+anagrams(Words) ->  dict:filter(fun(_K, V) -> length(V) > 1 end, anagram_dict(Words)).
 
 anagram_dict([]) -> dict:new();
 anagram_dict([W|Words]) -> dict:append(lists:sort(W), W, anagram_dict(Words)).
