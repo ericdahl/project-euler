@@ -4,7 +4,7 @@ compile:
 	@true
 
 run: compile
-	./$(P).lua
+	[ -f $(P).lua ] && ./$(P).lua || true
 
 clean:
 	@true

@@ -4,7 +4,7 @@ compile:
 	@true
 
 run: compile
-	python $(P).py
+	[ -f $(P).py ] && python $(P).py || true
 
 clean:
 	@true

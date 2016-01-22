@@ -1,11 +1,15 @@
 #!/usr/bin/env escript
 
-main([String]) ->
+main([Args]) ->
   true = code:add_pathz("ebin/"),
-  M = element(2, code:load_abs("ebin/" ++ String)),
-  TimeMillis = element(1, timer:tc(M, start, [])) div 1000,
-  io:format("~p  ~p ~n", [String, TimeMillis]),
-  3;
+  {_, M} = code:load_abs("ebin/" ++ Args),
+  case M of
+      nofile -> 0;
+      _ -> 
+        TimeMillis = element(1, timer:tc(M, start, [])) div 1000,
+        io:format("~p  ~p ~n", [Args, TimeMillis])
+  end;
+  
 
 main(_) ->
   usage().
