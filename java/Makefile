@@ -1,10 +1,10 @@
 P=p001
 
 compile:
-	mvn -q compile
+	which mvn 2> /dev/null && mvn -q compile || true
 
 run: compile
-	java -cp target/classes Runner $(P)
+	which java 2> /dev/null  && java -cp target/classes Runner $(P) || true
 
 clean:
-	mvn -q clean
+	which mvn 2> /dev/null && mvn -q clean || true

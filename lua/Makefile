@@ -4,7 +4,7 @@ compile:
 	@true
 
 run: compile
-	[ -f $(P).lua ] && ./$(P).lua || true
+	which lua 2> /dev/null && [ -f $(P).lua ] && ./$(P).lua || true
 
 clean:
 	@true

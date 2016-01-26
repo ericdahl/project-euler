@@ -1,10 +1,10 @@
 P=p001
 
 compile:
-	grunt
+	which grunt 2> /dev/null && grunt || true
 
 run: compile
-	grunt execute --problem $(P)
+	which grunt 2> /dev/null && grunt execute --problem $(P) || true
 
 clean:
 	rm -r node_modules/
