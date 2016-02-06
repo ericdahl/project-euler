@@ -4,7 +4,7 @@ compile:
 	cc -std=c99 -Wall -O2 -L/usr/local/lib -I/usr/local/include -lgmp $(P).c  -o $(P) 
 
 run: compile
-	time ./$(P)
+	./$(P)
 
 clean:
 	rm ./$(P)
