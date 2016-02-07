@@ -11,7 +11,7 @@ before_install:
   - export PATH="${PWD}/bin:${PATH}"
   - sudo apt-get remove erlang erlang-base erlang-base-hipe
   - sudo apt-get update
-  - sudo apt-get install libwxgtk2.8-0
+  - sudo apt-get install -y libwxgtk2.8-0 libgmp-dev
   - wget http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-erlang_18.0-1~debian~wheezy_amd64.deb
   - sudo dpkg -i esl-erlang_18.0-1~debian~wheezy_amd64.deb
   - (cd js && npm install)
