@@ -7,6 +7,7 @@ compile:
 	cd erlang && $(MAKE) compile
 	cd java && $(MAKE) compile
 	cd js && $(MAKE) compile
+	cd go && $(MAKE) compile
 
 run:
 	cd c && $(MAKE) run
@@ -15,6 +16,7 @@ run:
 	cd erlang && $(MAKE) run
 	cd java && $(MAKE) run
 	cd js && $(MAKE) run
+	cd go && $(MAKE) run
 
 clean:
 	cd c && $(MAKE) clean
@@ -23,3 +25,4 @@ clean:
 	cd erlang && $(MAKE) clean
 	cd java && $(MAKE) clean
 	cd js && $(MAKE) clean
+	cd go && $(MAKE) clean
