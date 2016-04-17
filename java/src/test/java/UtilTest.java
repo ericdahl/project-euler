@@ -4,9 +4,7 @@ import java.util.BitSet;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 public class UtilTest {
 
@@ -36,5 +34,14 @@ public class UtilTest {
         assertThat(Util.reverse(0L), is(0L));
         assertThat(Util.reverse(7L), is(7L));
         assertThat(Util.reverse(933L), is(339L));
+    }
+
+    @Test
+    public void shouldGetDivisors() {
+        assertThat(Util.divisors(4).boxed().collect(Collectors.toList()), hasItems(1, 2, 4));
+        assertThat(Util.divisors(14).boxed().collect(Collectors.toList()), hasItems(1, 2, 7, 14));
+        assertThat(Util.divisors(15).boxed().collect(Collectors.toList()), hasItems(1, 3, 5, 15));
+        assertThat(Util.divisors(7).boxed().collect(Collectors.toList()), hasItems(1, 7));
+        assertThat(Util.divisors(1).boxed().collect(Collectors.toList()), hasItems(1));
     }
 }

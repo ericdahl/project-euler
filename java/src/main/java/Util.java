@@ -1,6 +1,8 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 public final class Util {
     private Util() {}
@@ -55,5 +57,25 @@ public final class Util {
             result = result * 10 + n % 10;
         }
         return result;
+    }
+
+    public static IntStream divisors(int n) {
+        final IntStream.Builder builder = IntStream.builder().add(1);
+
+        for (int i = 2; i * i <= n; ++i) {
+            if (n % i == 0) {
+                int d = n / i;
+                builder.add(i);
+                if (i != d) {
+                    builder.add(d);
+                }
+            }
+        }
+
+        if (n != 1) {
+            builder.add(n);
+        }
+
+        return builder.build();
     }
 }
