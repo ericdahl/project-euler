@@ -1,7 +1,7 @@
 P=p001
 
 compile:
-	cc -std=c99 -Wall -O2 -L/usr/local/lib -I/usr/local/include -lgmp $(P).c  -o $(P) 
+	cc -std=c99 -Wall -O2 -L/usr/local/lib -I/usr/local/include -lgmp util.c $(P).c  -o $(P) 
 
 run: compile
 	./$(P)
