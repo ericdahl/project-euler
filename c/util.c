@@ -56,3 +56,27 @@ bool* generate_prime_array(int n) {
     
     return candidates;
 }
+
+bool pandigital9(long n) {
+
+    if (n < 100000000 || n > 999999999) {
+        return false;
+    }
+
+    int digits[10] = {1, 0, 0, 0, 0, 0, 0, 0, 0};
+    for (; n > 0; n /= 10) {
+        if (digits[n % 10]) {
+            return false;
+        }
+        digits[n % 10]++;
+    }
+    return true;
+}
+
+
+long concat(int a, int b) {
+    int n = 10;
+    for (; b >= n; n *= 10);
+    //printf("%d %d %d\n", a, n, b);
+    return (long) a * (long) n + (long) b;
+}
