@@ -8,5 +8,6 @@ int* generate_primes(int n);
 bool* generate_prime_array(int n);
 
 
+bool pandigital(long n);
 bool pandigital9(long n);
 long concat(int a, int b);

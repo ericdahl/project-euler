@@ -62,21 +62,30 @@ bool pandigital9(long n) {
     if (n < 100000000 || n > 999999999) {
         return false;
     }
+    return pandigital(n);
+}
 
+bool pandigital(long n) {
     int digits[10] = {1, 0, 0, 0, 0, 0, 0, 0, 0};
+    int n_digits = 0;
     for (; n > 0; n /= 10) {
         if (digits[n % 10]) {
             return false;
         }
+        n_digits++;
         digits[n % 10]++;
+    }
+
+    for (int i = 1; i <= n_digits; i++) {
+        if (!digits[i]) {
+            return false;
+        }
     }
     return true;
 }
 
-
 long concat(int a, int b) {
     int n = 10;
     for (; b >= n; n *= 10);
-    //printf("%d %d %d\n", a, n, b);
     return (long) a * (long) n + (long) b;
 }
