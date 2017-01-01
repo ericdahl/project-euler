@@ -11,4 +11,6 @@ java/target/
 
 js/node_modules/
 
+c/bin/
+
 **/*\.swp
