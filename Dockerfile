@@ -8,6 +8,7 @@ RUN apt-get install -y erlang-base rebar
 RUN apt-get install -y openjdk-8-jdk maven
 RUN apt-get install -y nodejs npm
 RUN apt-get install -y libgmp-dev
+RUN apt-get install -y libglib2.0-dev
 RUN apt-get install -y golang
 ADD . /app
 
