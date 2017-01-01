@@ -1,44 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
 
-static const int LIMIT = 10000000;
+#include <glib.h>
+
+static const int LIMIT = 2500;
 
 static int p(const int n);
 
 int main(int argc, char** argv) {
 
-    bool pnumber[LIMIT]; // FIXME: extremely memory inefficient and slow
-    memset(pnumber, false, (int) (LIMIT * sizeof(bool)));
+    int pvalues[LIMIT + 1];
+    pvalues[LIMIT] = 0;
 
-    for (int i = 1; ; ++i) {
-        const int result = p(i);
-        if (result > LIMIT) {
-            break;
-        }
-        pnumber[result] = true;
+    GHashTable* const ptable = g_hash_table_new(g_int_hash, g_int_equal);
+
+    for (int i = 1; i < LIMIT; ++i) {
+        pvalues[i] = p(i);
+        g_hash_table_insert(ptable, pvalues + i, pvalues + i);
     }
 
-    for (bool* j = pnumber; j - pnumber < LIMIT; ++j) {
-        for (; !*j; ++j);
-
-        const int nj = j - pnumber;
-
-        for (bool* k = j + 1; k - pnumber < LIMIT; ++k) {
-            for (; !*k; ++k);
-
-            const int nk = k - pnumber;
-            const int sum = nj + nk;
-            const int diff = nk - nj;
-            if (pnumber[diff] && sum < LIMIT && pnumber[sum]) {
+    for (int* j = pvalues + 1; *j; ++j) {
+        for (int* k = j + 1; *k; ++k) {
+            const int sum = *j + *k;
+            const int diff = *k - *j;
+            if (g_hash_table_lookup(ptable, &sum) && g_hash_table_lookup(ptable, &diff)) {
                 printf("%d\n", diff);
                 exit(EXIT_SUCCESS);
             }
         }
     }
-
-
 }
 
 static int p(const int n) {
