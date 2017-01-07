@@ -89,3 +89,15 @@ long concat(int a, int b) {
     for (; b >= n; n *= 10);
     return (long) a * (long) n + (long) b;
 }
+
+
+int gcd(int a, int b) {
+    int greatest = 1;
+    int min = (a < b) ? a : b;
+    for (int i = 2; i <= min; ++i) {
+        if (a % i == 0 && b % i == 0) {
+            greatest = i;
+        }
+    }
+    return greatest;
+}

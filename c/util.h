@@ -11,3 +11,5 @@ bool* generate_prime_array(int n);
 bool pandigital(long n);
 bool pandigital9(long n);
 long concat(int a, int b);
+
+int gcd(int a, int b);
