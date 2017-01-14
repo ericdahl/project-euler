@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include <gmp.h>
 
 #include "util.h"
 
@@ -100,4 +101,17 @@ int gcd(int a, int b) {
         }
     }
     return greatest;
+}
+
+bool is_prime(long n) {
+    mpz_t p;
+    mpz_init_set_ui(p, n);
+    int result = mpz_probab_prime_p(p, 45);
+    switch (result) {
+        case 2:
+            return true;
+        case 0:
+            return false;
+    }
+    return true; // FIXME
 }
