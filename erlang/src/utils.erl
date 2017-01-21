@@ -23,6 +23,7 @@ primes(L, I, Max) when I > Max ->
 primes(L, I, Max) ->
   primes(lists:filter(fun(J) -> J =< I orelse J rem I /= 0 end, L), I + 1, Max).
 
+is_prime(2) -> true;
 is_prime(N) when N == 1 orelse N rem 2 == 0 -> false;
 is_prime(N) -> is_prime(N, 3).
 is_prime(N, I) when I * I > N -> true;
