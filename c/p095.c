@@ -1,7 +1,4 @@
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <glib.h>
 
 #include "util.h"
 
