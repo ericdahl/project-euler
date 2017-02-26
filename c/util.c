@@ -115,3 +115,20 @@ bool is_prime(long n) {
     }
     return true; // FIXME
 }
+
+
+int divisor_sum(int n) {
+    int sum = 1;
+    int limit = n / 2;
+    for (int i = 2; i < limit; ++i) {
+        if (n % i == 0) {
+            sum += i;
+            if (i * i != n) {
+                sum += n / i;
+            }
+            limit = n / i;
+        }
+
+    }
+    return sum;
+}

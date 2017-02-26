@@ -13,3 +13,5 @@ bool pandigital9(long n);
 long concat(int a, int b);
 
 int gcd(int a, int b);
+
+int divisor_sum(int n);
